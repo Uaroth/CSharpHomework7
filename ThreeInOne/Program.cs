@@ -10,7 +10,7 @@ int[,] matrInt = GetNormalMatrix(rows, columns);
 PrintDoubleMatrix(matrDoub);
 PrintNormalMatrix(matrInt);
 CheckIndMatr(matrInt);
-FindMatrAvrg(matrInt);
+// FindMatrAvrg(matrInt);
 
 int SetNumber(string text)
 {
@@ -56,14 +56,17 @@ void CheckIndMatr(int[,] matr)
 {
     Console.WriteLine("Укажите значение для получения индекса");
     int num = int.Parse(Console.ReadLine());
-    int numCount = 0;
+    int numCount = 0; // Чтоб остановить после первого обнаружения и зафиксировать отсутствие
     for (int i = 0; i < matr.GetLength(0); i++)
     {
         for (int j = 0; j < matr.GetLength(1); j++)
         {
-            if (num == matr[i, j]) Console.WriteLine($"Индекс = ({i},{j})");
-            numCount++;
-            break;
+            if (numCount == 0 && num == matr[i, j])
+            {
+                numCount++;
+                Console.WriteLine($"Индекс = ({i},{j})");
+
+            }
         }
     }
     if (numCount == 0) Console.WriteLine("Нет такого значения");
@@ -103,17 +106,18 @@ void PrintNormalMatrix(int[,] matr)
 // Задайте двумерный массив из целых чисел.
 // Найдите среднее арифметическое элементов в каждом столбце.
 
-void FindMatrAvrg(int[,] matr)
-{
-    int sum = 0;
-    int i = 0;
-    int j = 0;
-    for (; i < matr.GetLength(0); i++)
-    {
-        for (; j < matr.GetLength(1); j++)
-        {
-            sum = sum + matr[i, j];
-        }
-        Console.WriteLine($"Среднее арифметическое столбца{j} = {sum / matr.GetLength(1)}");
-    }
-}
+// void FindMatrAvrg(int[,] matr)
+// {
+//     int sum = 0;
+//     int i = 0;
+//     int j = 0;
+//     double avrg = sum / matr.GetLength(0);
+//     for (; i < matr.GetLength(1); i++)
+//     {
+//         for (; j < matr.GetLength(0); j++)
+//         {
+//             sum = sum + matr[i, j];
+//         }
+//         Console.WriteLine($"Среднее арифметическое столбца{j} = {avrg}");
+//     }
+// }
