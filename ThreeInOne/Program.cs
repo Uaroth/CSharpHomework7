@@ -1,5 +1,10 @@
-﻿// Задайте двумерный массив размером m × n,
+﻿// 1) Задайте двумерный массив размером m × n,
 // заполненный случайными вещественными числами
+// 2) Изменено решением на семинаре: напишите программу,
+// которая на вход принимает значение элемента,
+// а выдаёт индекс или указание на отсутствие элемента.
+// 3) Задайте двумерный массив из целых чисел.
+// Найдите среднее арифметическое элементов в каждом столбце.
 
 Console.WriteLine("Здравствуйте!");
 
@@ -10,7 +15,7 @@ int[,] matrInt = GetNormalMatrix(rows, columns);
 PrintDoubleMatrix(matrDoub);
 PrintNormalMatrix(matrInt);
 CheckIndMatr(matrInt);
-// FindMatrAvrg(matrInt);
+FindMatrAvrg(matrInt);
 
 int SetNumber(string text)
 {
@@ -48,9 +53,6 @@ void PrintDoubleMatrix(double[,] matr)
 }
 
 
-// (изменено решением на семинаре) Напишите программу,
-// которая на вход принимает значение элемента,
-// а выдаёт индекс или указание на отсутствие элемента.
 
 void CheckIndMatr(int[,] matr)
 {
@@ -103,21 +105,17 @@ void PrintNormalMatrix(int[,] matr)
 }
 
 
-// Задайте двумерный массив из целых чисел.
-// Найдите среднее арифметическое элементов в каждом столбце.
 
-// void FindMatrAvrg(int[,] matr)
-// {
-//     int sum = 0;
-//     int i = 0;
-//     int j = 0;
-//     double avrg = sum / matr.GetLength(0);
-//     for (; i < matr.GetLength(1); i++)
-//     {
-//         for (; j < matr.GetLength(0); j++)
-//         {
-//             sum = sum + matr[i, j];
-//         }
-//         Console.WriteLine($"Среднее арифметическое столбца{j} = {avrg}");
-//     }
-// }
+
+void FindMatrAvrg(int[,] matr)
+{
+    for (int j = 0; j < matr.GetLength(1); j++)
+    {
+        double sum = 0;
+        for (int i = 0; i < matr.GetLength(0); i++)
+        {
+            sum = sum + matr[i, j];
+        }
+        Console.WriteLine($"Среднее арифметическое столбца {j} = {sum / matr.GetLength(0)}");
+    }
+}
