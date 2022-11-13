@@ -17,12 +17,14 @@ PrintNormalMatrix(matrInt);
 CheckIndMatr(matrInt);
 FindMatrAvrg(matrInt);
 
+
 int SetNumber(string text)
 {
     Console.WriteLine($"Введите число {text}");
     int num = int.Parse(Console.ReadLine());
     return num;
 }
+
 
 double[,] RanDoubleMatrix(int rows, int columns, int maxValue = 10, int minValue = 0)
 {
@@ -38,6 +40,7 @@ double[,] RanDoubleMatrix(int rows, int columns, int maxValue = 10, int minValue
     return matrix;
 }
 
+
 void PrintDoubleMatrix(double[,] matr)
 {
     Console.WriteLine("Матрица вещественных готова");
@@ -51,7 +54,6 @@ void PrintDoubleMatrix(double[,] matr)
     }
     Console.WriteLine();
 }
-
 
 
 void CheckIndMatr(int[,] matr)
@@ -75,7 +77,6 @@ void CheckIndMatr(int[,] matr)
 }
 
 
-
 int[,] GetNormalMatrix(int rows, int columns, int maxValue = 10, int minValue = 0)
 {
     int[,] matrix = new int[rows, columns];
@@ -90,10 +91,9 @@ int[,] GetNormalMatrix(int rows, int columns, int maxValue = 10, int minValue = 
 }
 
 
-
 void PrintNormalMatrix(int[,] matr)
 {
-    Console.WriteLine("Матрица целочисленых готова");
+    Console.WriteLine("Матрица целочисленных готова");
     for (int i = 0; i < matr.GetLength(0); i++)
     {
         for (int j = 0; j < matr.GetLength(1); j++)
@@ -103,8 +103,6 @@ void PrintNormalMatrix(int[,] matr)
         Console.WriteLine();
     }
 }
-
-
 
 
 void FindMatrAvrg(int[,] matr)
