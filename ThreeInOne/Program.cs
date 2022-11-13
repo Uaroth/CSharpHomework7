@@ -44,6 +44,7 @@ void PrintDoubleMatrix(double[,] matr)
         }
         Console.WriteLine();
     }
+    Console.WriteLine();
 }
 
 
@@ -54,21 +55,23 @@ void PrintDoubleMatrix(double[,] matr)
 void CheckIndMatr(int[,] matr)
 {
     Console.WriteLine("Укажите значение для получения индекса");
-    string number = Console.ReadLine();
     int num = int.Parse(Console.ReadLine());
+    int numCount = 0;
     for (int i = 0; i < matr.GetLength(0); i++)
     {
         for (int j = 0; j < matr.GetLength(1); j++)
         {
             if (num == matr[i, j]) Console.WriteLine($"Индекс = ({i},{j})");
-            else System.Console.WriteLine("Нет такого значения");
+            numCount++;
+            break;
         }
     }
+    if (numCount == 0) Console.WriteLine("Нет такого значения");
 }
 
 
 
-int[,] GetNormalMatrix(int rows, int columns, int maxValue = 10, int minValue = 10)
+int[,] GetNormalMatrix(int rows, int columns, int maxValue = 10, int minValue = 0)
 {
     int[,] matrix = new int[rows, columns];
     for (int i = 0; i < rows; i++)
@@ -105,10 +108,12 @@ void FindMatrAvrg(int[,] matr)
     int sum = 0;
     int i = 0;
     int j = 0;
-    for (; j < matr.GetLength(1); j++)
+    for (; i < matr.GetLength(0); i++)
     {
-        sum = sum + matr[i, j];
+        for (; j < matr.GetLength(1); j++)
+        {
+            sum = sum + matr[i, j];
+        }
+        Console.WriteLine($"Среднее арифметическое столбца{j} = {sum / matr.GetLength(1)}");
     }
-
-    Console.WriteLine($"Среднее арифметическое столбца{j} = {sum}");
 }
